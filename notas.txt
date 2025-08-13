@@ -1,0 +1,70 @@
+Tarea Swift
+
+import Foundation
+
+// Variables implicitas
+var nombre = "Ana"
+var edad = 25
+var temperatura = 23.5
+var esEncendido = true
+var contador = 0
+
+// Constantes implicitas
+let pi = 3.1416
+let gravedad = 9.81
+let saludo = "Hola Mundo"
+let diasSemana = 7
+let esSwiftTipado = true
+
+// Mostrar Variables
+print("=== Variables ===")
+print("Nombre: \(nombre)")
+print("Edad: \(edad)")
+print("Temperatura: \(temperatura)")
+print("¿Está encendido?: \(esEncendido)")
+print("Contador: \(contador)")
+
+// Línea de separación
+print("------------------------")
+
+// Mostrar Constantes
+print("=== Constantes ===")
+print("Pi: \(pi)")
+print("Gravedad: \(gravedad)")
+print("Saludo: \(saludo)")
+print("Días en una semana: \(diasSemana)")
+print("¿Swift es tipado?: \(esSwiftTipado)")
+lineString)
+
+// Variables explicitas
+var ciudad: String = "Madrid"
+var anioActual: Int = 2025
+var altura: Double = 1.78
+var tieneMascota: Bool = false
+var puntaje: Int = 100
+
+// Constantes explicitas
+let velocidadLuz: Double = 299792458
+let monedaLocal: String = "Euro"
+let mesesAnio: Int = 12
+let esPlanetaHabitable: Bool = true
+let letraInicial: Character = "A"
+
+// Mostrar Variables
+print("=== Variables ===")
+print("Ciudad: \(ciudad)")
+print("Año actual: \(anioActual)")
+print("Altura: \(altura)")
+print("¿Tiene mascota?: \(tieneMascota)")
+print("Puntaje: \(puntaje)")
+
+// Línea de separación
+print("------------------------")
+
+// Mostrar Constantes
+print("=== Constantes ===")
+print("Velocidad de la luz: \(velocidadLuz) m/s")
+print("Moneda local: \(monedaLocal)")
+print("Meses en un año: \(mesesAnio)")
+print("¿Es un planeta habitable?: \(esPlanetaHabitable)")
+print("Letra inicial: \(letraInicial)")
