@@ -1,7 +1,5 @@
 Tarea Swift
 
-import Foundation
-
 // Variables implicitas
 var nombre = "Ana"
 var edad = 25
@@ -24,8 +22,7 @@ print("Temperatura: \(temperatura)")
 print("¿Está encendido?: \(esEncendido)")
 print("Contador: \(contador)")
 
-// Línea de separación
-print("------------------------")
+
 
 // Mostrar Constantes
 print("=== Constantes ===")
@@ -34,7 +31,9 @@ print("Gravedad: \(gravedad)")
 print("Saludo: \(saludo)")
 print("Días en una semana: \(diasSemana)")
 print("¿Swift es tipado?: \(esSwiftTipado)")
-lineString)
+
+// Línea de separación
+print("------------------------")
 
 // Variables explicitas
 var ciudad: String = "Madrid"
@@ -58,8 +57,6 @@ print("Altura: \(altura)")
 print("¿Tiene mascota?: \(tieneMascota)")
 print("Puntaje: \(puntaje)")
 
-// Línea de separación
-print("------------------------")
 
 // Mostrar Constantes
 print("=== Constantes ===")
