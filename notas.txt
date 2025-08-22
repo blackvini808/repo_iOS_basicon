@@ -36,32 +36,31 @@ print("¿Swift es tipado?: \(esSwiftTipado)")
 print("------------------------")
 
 // Variables explicitas
-var ciudad: String = "Madrid"
-var anioActual: Int = 2025
-var altura: Double = 1.78
-var tieneMascota: Bool = false
-var puntaje: Int = 100
+var velocidad: Float = 88.5
+var inicial: Character = "Z"
+var poblacion: UInt = 500000
+var colores: [String] = ["Rojo", "Verde", "Azul"]
+var notas: [Int] = [10, 9, 8]
 
 // Constantes explicitas
-let velocidadLuz: Double = 299792458
-let monedaLocal: String = "Euro"
-let mesesAnio: Int = 12
-let esPlanetaHabitable: Bool = true
-let letraInicial: Character = "A"
+let vocales: Set<Character> = ["a", "e", "i", "o", "u"]
+let paises: [String] = ["España", "México", "Argentina"]
+let coordenadas: (Double, Double) = (40.4168, -3.7038) // tupla
+let capitales: [String: String] = ["España": "Madrid", "México": "CDMX", "Argentina": "Buenos Aires"]
+let mensajeOpcional: String? = "Hola desde Swift"
 
 // Mostrar Variables
 print("=== Variables ===")
-print("Ciudad: \(ciudad)")
-print("Año actual: \(anioActual)")
-print("Altura: \(altura)")
-print("¿Tiene mascota?: \(tieneMascota)")
-print("Puntaje: \(puntaje)")
-
+print("Velocidad: \(velocidad)")
+print("Inicial: \(inicial)")
+print("Población: \(poblacion)")
+print("Colores: \(colores)")
+print("Notas: \(notas)")
 
 // Mostrar Constantes
 print("=== Constantes ===")
-print("Velocidad de la luz: \(velocidadLuz) m/s")
-print("Moneda local: \(monedaLocal)")
-print("Meses en un año: \(mesesAnio)")
-print("¿Es un planeta habitable?: \(esPlanetaHabitable)")
-print("Letra inicial: \(letraInicial)")
+print("Vocales: \(vocales)")
+print("Países: \(paises)")
+print("Coordenadas: \(coordenadas)")
+print("Capitales: \(capitales)")
+print("Mensaje opcional: \(mensajeOpcional ?? "No hay mensaje")")
