@@ -1,0 +1,140 @@
+import Foundation
+
+// Clase base: Persona
+class Persona {
+    var nombre: String
+    var lugar: Lugar
+    var maestro: Maestro?
+    
+    init(nombre: String, lugar: Lugar) {
+        self.nombre = nombre
+        self.lugar = lugar
+    }
+    
+    func descripcion() {
+        print("\n--- Información del personaje ---")
+        print("Nombre: \(nombre)")
+        print("Lugar de nacimiento: \(lugar.nombre)")
+        
+        if let maestro = maestro {
+            print("Es maestr@: \(maestro.tipo)")
+            
+            if maestro.subElementos.isEmpty {
+                print("No domina sub-elementos especiales.")
+            } else {
+                print("Sub-elementos: \(maestro.subElementos.joined(separator: ", "))")
+            }
+        } else {
+            print("No es maestro de ningún elemento.")
+        }
+    }
+}
+
+// Clase Lugar
+class Lugar {
+    var nombre: String
+    
+    init(nombre: String) {
+        self.nombre = nombre
+    }
+    
+    // Lista centralizada de lugares posibles
+    static let todos = [
+        "Ba Sing Se", "Omashu", "Tribu Agua del Norte", "Tribu Agua del Sur", "Tribu Agua del Pantano",
+        "Templos Aire del Norte", "Templos Aire del Sur", "Templos Aire del Este", "Templos Aire del Oeste",
+        "Nación del Fuego"
+    ]
+    
+    // Devuelve un lugar aleatorio
+    static func lugarAleatorio() -> Lugar {
+        let nombre = todos.randomElement() ?? "Lugar desconocido"
+        return Lugar(nombre: nombre)
+    }
+    
+    // Determina el elemento principal según el lugar
+    func elementoPrincipal() -> String {
+        switch nombre {
+        case "Ba Sing Se", "Omashu":
+            return "Tierra"
+        case "Tribu Agua del Norte", "Tribu Agua del Sur", "Tribu Agua del Pantano":
+            return "Agua"
+        case "Templos Aire del Norte", "Templos Aire del Sur", "Templos Aire del Este", "Templos Aire del Oeste":
+            return "Aire"
+        case "Nación del Fuego":
+            return "Fuego"
+        default:
+            return "Desconocido"
+        }
+    }
+}
+
+// Clase Maestro
+class Maestro {
+    var tipo: String
+    var subElementos: [String]
+    
+    init(tipo: String, subElementos: [String]) {
+        self.tipo = tipo
+        self.subElementos = subElementos
+    }
+    
+    static func maestroAleatorio(lugar: Lugar) -> Maestro {
+        let esAvatar = Int.random(in: 1...100) <= 5 // 5% de probabilidad de ser Avatar
+        let tipo: String
+        
+        if esAvatar {
+            tipo = "Avatar"
+        } else {
+            tipo = lugar.elementoPrincipal() // Ahora concuerda con el lugar
+        }
+        
+        let subElementos = SubElemento.subElementosPorTipo(tipo: tipo)
+        return Maestro(tipo: tipo, subElementos: subElementos)
+    }
+}
+
+
+class SubElemento {
+    private static func elegirSubelementos(_ opciones: [String]) -> [String] {
+        // Siempre devuelve al menos 1 sub-elemento, hasta todos
+        return opciones.shuffled().prefix(Int.random(in: 1...opciones.count)).map { $0 }
+    }
+    
+    static func subElementosPorTipo(tipo: String) -> [String] {
+        switch tipo {
+        case "Agua":
+            return elegirSubelementos(["Curación", "Sangre control", "Hielo"])
+        case "Tierra":
+            return elegirSubelementos(["Metal control", "Lava control", "Arena control"])
+        case "Fuego":
+            return elegirSubelementos(["Rayo control", "Combustión control"])
+        case "Aire":
+            return elegirSubelementos(["Proyección espiritual", "Vuelo"])
+        case "Avatar":
+            return ["MAESTRO DE TODOS LOS ELEMENTOS"]
+        default:
+            return []
+        }
+    }
+}
+
+class GeneradorAvatar {
+    static func generar(nombre: String) -> Persona {
+        let lugar = Lugar.lugarAleatorio()
+        let persona = Persona(nombre: nombre, lugar: lugar)
+        persona.maestro = Maestro.maestroAleatorio(lugar: lugar) // <-- aquí se pasa el lugar
+        return persona
+    }
+}
+
+// ----------- MAIN -----------
+
+print("Bienvenido al generador del mundo Avatar 🪨 🔥 💧 🌪️")
+print("Introduce el nombre de tu personaje:")
+
+if let nombre = readLine(), !nombre.isEmpty {
+    let personaje = GeneradorAvatar.generar(nombre: nombre)
+    personaje.descripcion()
+} else {
+    print("No introdujiste un nombre válido. Intenta de nuevo.")
+}
